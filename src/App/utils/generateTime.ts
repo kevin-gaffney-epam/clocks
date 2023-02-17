@@ -23,12 +23,20 @@ const generateTime = (
       times[i] = ('0' + hh).slice(-2) + ':' + ('0' + mm).slice(-2);
     }
     if (timeFormat === 12) {
-      times[i] =
-        ('0' + (hh % timeFormat)).slice(-2) +
-        ':' +
-        ('0' + mm).slice(-2) +
-        ' ' +
-        AP[Math.floor(hh / 12)];
+      if (hh === 12) {
+        times[i] = hh + ':' +
+           ('0' + mm).slice(-2) +
+          ' ' +
+          AP[Math.floor(hh / 12)];
+      }
+      else {
+        times[i] =
+          ('0' + (hh % timeFormat)).slice(-2) +
+          ':' +
+          ('0' + mm).slice(-2) +
+          ' ' +
+          AP[Math.floor(hh / 12)];
+      }
     }
     start_time_in_minute = start_time_in_minute + minuteInterval;
   }
